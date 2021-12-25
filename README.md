@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Spacebox Application Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal is to create a simple app for users to browse Github repos and tag those of interest to them. Users can register or login. They can search for repositories, view open PRs and issues.
+The is implemented in react using Github’s REST endpoint
 
-## Available Scripts
+## Built With
 
-In the project directory, you can run:
+- HTML 
+- CSS
+- BootStrap
+- React
+- Redux
+- Javascript
+- Jest
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1 - On Github, on the main page of the Gameportal repository, click the Code button and copy "Clone with HTTPS" by clicking the copy icon.
+In your terminal, enter a git clone and past the link that you copied from the repository, and press the   Enter
+(e.g. git clone https://github.com/shadabwahidullah/Spacebox-Application-project.git).
 
-### `npm test`
+* To get a local copy up and running follow these steps.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2 - open your terminal and clone the project running 
 
-### `npm run build`
+`https://github.com/shadabwahidullah/Spacebox-Application-project.git`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3 - install or update your npm running
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install` 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+or if you have it installed already 
 
-### `npm run eject`
+`npm update`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4 - start your local server and build project using
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Testing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+We use Jest library to test our code.
 
-## Learn More
+You can run those tests locally if you follow the steps above from 1 to 3, and then run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm test`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authors
 
-### Code Splitting
+👤 **Wahidullah Shadab**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- GitHub: [@githubhandle](https://github.com/shadabwahidullah)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/wahidullah-shadab-2712031a3)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🤝 Contributing
 
-### Making a Progressive Web App
+Contributions, issues, and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Feel free to check the [issues page](../../issues/).
 
-### Advanced Configuration
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Give a ⭐️ if you like this project!
 
-### Deployment
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Design by [Nelson Sakwa on Behance](https://www.behance.net/sakwadesignstudio).
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
