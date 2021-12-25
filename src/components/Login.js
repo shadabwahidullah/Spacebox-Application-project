@@ -21,6 +21,7 @@ const Login = () => {
         >
           submit
         </button>
+        <Link to="/"> Home</Link>
       </form>
     </div>
   );
