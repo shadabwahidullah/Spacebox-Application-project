@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Navbar from './Navbar';
 import Searchbar from './Searchbar';
-import { fetchRepos } from '../redux/reposReducer';
+import { fetchWatchedRepos } from '../redux/reposReducer';
 
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchRepos());
+    dispatch(fetchWatchedRepos());
   }, []);
   return (
     <div className="row">
