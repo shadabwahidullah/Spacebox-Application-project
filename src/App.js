@@ -6,6 +6,7 @@ import Home from './components/Home';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/js/src/collapse';
 import NewRepo from './components/newRepo';
+import RepoDetails from './components/RepoDetails';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       <Routes>
         <Route path="/" exact="true" element={<Home />} />
         <Route path="/add-new-repo" exact="true" element={<NewRepo />} />
+        <Route path="/repo-details" element={<RepoDetails />}>
+          <Route path=":repoId" element={<RepoDetails />} />
+        </Route>
         <Route path="/login" exact="true" element={<Login />} />
       </Routes>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addRepos } from '../redux/newRepoReducer';
 import { removeRepo } from '../redux/reposReducer';
 
@@ -54,7 +55,7 @@ const Repo = (props) => {
           </h6>
         </span>
         <button
-          className="btn-warning rounded px-5 py-1 mt-4"
+          className="btn-warning rounded px-5 py-1 mt-4 mx-2"
           type="button"
           onClick={() => {
             addOrRemove();
@@ -64,6 +65,7 @@ const Repo = (props) => {
           {' '}
           watch
         </button>
+        <Link key={id} to={`/repo-details/${id}`}><button className="btn-warning rounded px-5 py-1 mt-4 mx-2" type="button">See Details</button></Link>
       </div>
     </div>
   );
