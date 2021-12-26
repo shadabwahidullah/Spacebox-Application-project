@@ -15,7 +15,7 @@ export const fetchWatchedRepos = () => (disptach) => {
   }).catch((error) => console.log(error.message));
 };
 
-const initialState = { Repos: {} };
+const initialState = { Repos: [] };
 
 const reposReducer = (state = initialState, action) => {
   switch (action.type) {

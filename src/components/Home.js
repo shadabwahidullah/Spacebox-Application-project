@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from './Navbar';
 import Searchbar from './Searchbar';
 import { fetchWatchedRepos } from '../redux/reposReducer';
+import Repo from './Repo';
 
 const Home = () => {
   const watchedRepos = useSelector((state) => state.reposReducer);
@@ -11,11 +12,18 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchWatchedRepos());
   }, []);
+
+  const populateRepo = (repo) => {
+    const {
+      id,
+    } = repo;
+    return <Repo key={id} repo={repo} />;
+  };
   return (
     <div className="row">
       <Navbar />
       <Searchbar />
-      <h1>Home page</h1>
+      {watchedRepos.Repos.map((repo) => populateRepo(repo))}
     </div>
   );
 };
