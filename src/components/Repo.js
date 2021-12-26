@@ -1,10 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addRepos } from '../redux/newRepoReducer';
+import { removeRepo } from '../redux/reposReducer';
 
 const Repo = (props) => {
-  const { repo } = props;
+  const dispatch = useDispatch();
+  const { repo, from } = props;
   const {
-    id, name, open_issues: openIssues, forks_count: forksCount, owner, created_at: dates,
+    id, name, open_issues: openIssues, forks_count: forksCount,
+    owner, created_at: dates, full_name: fullname,
   } = repo;
+
+  const addOrRemove = () => {
+    if (from === 'home') {
+      dispatch(removeRepo(owner.login, name));
+    } else {
+      dispatch(addRepos(fullname));
+    }
+  };
+
   const date = new Date(dates).toDateString();
   console.log('date is : ', date);
   const { login: ownerName } = owner;
@@ -39,7 +53,17 @@ const Repo = (props) => {
             {date}
           </h6>
         </span>
-        <button className="btn-warning rounded px-5 py-1 mt-4" type="button">add to watch</button>
+        <button
+          className="btn-warning rounded px-5 py-1 mt-4"
+          type="button"
+          onClick={() => {
+            addOrRemove();
+          }}
+        >
+          {from === 'home' ? 'Remove from ' : 'Add to '}
+          {' '}
+          watch
+        </button>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const NewRepo = () => {
     const {
       id,
     } = repo;
-    return <Repo key={id} repo={repo} />;
+    return <Repo key={id} repo={repo} from="newRepo" />;
   };
   return (
     <div>

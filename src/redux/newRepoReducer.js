@@ -2,8 +2,10 @@ import axios from 'axios';
 import { BASE_URL, ACCESS_TOKEN } from './consts';
 
 const SEARCH_REPOS_URL = `${BASE_URL}/search/repositories?q=`;
+// const ADD_REPOS_URL = `${BASE_URL}/repos`;
 
-export const SEARCH_REPOS = 'spacebox/redux/newRepoReducer/SEARCH_REPOS';
+const SEARCH_REPOS = 'spacebox/redux/newRepoReducer/SEARCH_REPOS';
+const ADD_REPOS = 'spacebox/redux/newRepoReducer/ADD_REPOS';
 
 export const searchRepos = (query, sorted) => (dispatch) => {
   console.log('search query is: ', query);
@@ -16,12 +18,24 @@ export const searchRepos = (query, sorted) => (dispatch) => {
   }).catch((error) => { console.log(error.message); });
 };
 
+export const addRepos = (fullname) => (dispatch) => {
+  console.log('add project has been called: ', fullname);
+  axios.put(`${BASE_URL}/repos/${fullname}/subscription?subscribed=true`, {
+    headers: { Authorization: `Basic ${ACCESS_TOKEN}` },
+  }).then((response) => {
+    console.log('add to watch list', response);
+    dispatch({ type: ADD_REPOS, payload: '' });
+  }).catch((error) => { console.log(error.message); });
+};
+
 const initialState = { SearchRes: [] };
 
 const newRepoReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_REPOS:
       return { ...state, SearchRes: action.payload };
+    case ADD_REPOS:
+      return { ...state };
     default:
       return state;
   }
