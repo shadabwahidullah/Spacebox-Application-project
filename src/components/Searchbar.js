@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchRepos } from '../redux/newRepoReducer';
-import { sortRepos } from '../redux/reposReducer';
+import { sortRepos, searchRepositories } from '../redux/reposReducer';
 
 const Searchbar = (props) => {
   const sorted = useSelector((state) => state.reposReducer.sorted);
@@ -14,6 +14,7 @@ const Searchbar = (props) => {
       dispatch(searchRepos(searchQuery));
     } else if (from === 'home') {
       console.log('called search from home');
+      dispatch(searchRepositories(searchQuery));
     }
   };
   return (

@@ -5,6 +5,7 @@ const FETCH_REPOS_URL = `${BASE_URL}/user/subscriptions`;
 
 export const FETCH = 'spacebox/redux/reposReducer/FETCH_WATCHED_REPOS';
 export const SORT = 'spacebox/redux/reposReducer/SORT_REPOS';
+export const SEARCH = 'spacebox/redux/reposReducer/SEARCH_REPOS';
 
 export const fetchWatchedRepos = () => (disptach) => {
   console.log('fetchRepos has been called');
@@ -21,6 +22,10 @@ export const sortRepos = (sorted) => (disptach) => {
   disptach({ type: SORT, payload: sorted });
 };
 
+export const searchRepositories = (query) => (disptach) => {
+  disptach({ type: SEARCH, payload: query });
+};
+
 const compare = (a, b) => {
   const { created_at: aCreated } = a;
   const { created_at: bCreated } = b;
@@ -33,18 +38,27 @@ const compare = (a, b) => {
   return 0;
 };
 
-const initialState = { Repos: [], sorted: false };
+const filterRepos = (query, repos) => repos.filter((repo) => {
+  console.log('query is', query);
+  console.log('repos is ', repo);
+  return repo.name.includes(query);
+});
+
+const initialState = { Repos: [], sorted: false, ReposBackup: [] };
 
 const reposReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH:
       console.log('action payload is', action.payload);
       console.log('state is ', state);
-      return { ...state, Repos: action.payload };
+      return { ...state, Repos: action.payload, ReposBackup: action.payload };
     case SORT:
     { const sortedRepo = state.Repos.sort((a, b) => compare(a, b));
       return { ...state, Repos: sortedRepo, sorted: action.payload };
     }
+    case SEARCH: {
+      const filtered = filterRepos(action.payload, state.ReposBackup);
+      return { ...state, Repos: filtered }; }
     default:
       return state;
   }
