@@ -4,12 +4,17 @@ import Searchbar from './Searchbar';
 import { fetchWatchedRepos } from '../redux/reposReducer';
 import Repo from './Repo';
 
+let flag = true;
+
 const Home = () => {
   const watchedRepos = useSelector((state) => state.reposReducer);
   console.log('watched repos are: ', watchedRepos);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchWatchedRepos());
+    if (flag) {
+      dispatch(fetchWatchedRepos());
+      flag = false;
+    }
   }, []);
 
   const populateRepo = (repo) => {
