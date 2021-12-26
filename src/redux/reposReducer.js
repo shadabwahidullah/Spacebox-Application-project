@@ -3,7 +3,7 @@ import { BASE_URL, ACCESS_TOKEN } from './consts';
 
 const FETCH_REPOS_URL = `${BASE_URL}/user/subscriptions`;
 
-export const FETCH = 'spacebox/repos/FETCH_WATCHED_REPOS';
+export const FETCH = 'spacebox/redux/reposReducer/FETCH_WATCHED_REPOS';
 
 export const fetchWatchedRepos = () => (disptach) => {
   console.log('fetchRepos has been called');
