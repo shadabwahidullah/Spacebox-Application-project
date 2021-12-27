@@ -34,13 +34,15 @@ or if you have it installed already
 
 `npm update`
 
-4 - start your local server and build project using
+4 - go to /root/redux/const and replace the value for ACCESS_TOKEN with your on personal access token to create a personal access token follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+5 - start your local server and build project using
 
 `npm start`
 
 ## Testing
 
-We use Jest library to test our code.
+We use Jest library to test our code. I have not added tests yet, but I will implement unit tests and snapshot tests soon.
 
 You can run those tests locally if you follow the steps above from 1 to 3, and then run:
 
