@@ -10,17 +10,14 @@ export const SEARCH = 'spacebox/redux/reposReducer/SEARCH_REPOS';
 const REMOVE = 'spacebox/redux/reposReducer/REMOVE_REPO';
 
 export const fetchWatchedRepos = () => (disptach) => {
-  console.log('fetchRepos has been called');
   axios.get(FETCH_REPOS_URL, {
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
   }).then((response) => {
-    console.log('response for fetchRepos is: ', response);
     disptach({ type: FETCH, payload: response.data });
-  }).catch((error) => console.log(error.message));
+  }).catch((error) => console.error(error.message));
 };
 
 export const sortRepos = (sorted) => (disptach) => {
-  console.log('sorted is ', sorted);
   disptach({ type: SORT, payload: sorted });
 };
 
@@ -32,8 +29,7 @@ export const removeRepo = (owner, repoName) => (disptach) => {
   axios.delete(`${REMOVE_REPO_URL}/${owner}/${repoName}/subscription`, {
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
   }).then(
-    (response) => {
-      console.log('removed successfully', response);
+    () => {
       disptach({ type: REMOVE, payload: [repoName, owner] });
     },
   );
@@ -51,11 +47,7 @@ const compare = (a, b) => {
   return 0;
 };
 
-const filterRepos = (query, repos) => repos.filter((repo) => {
-  console.log('query is', query);
-  console.log('repos is ', repo);
-  return repo.name.includes(query);
-});
+const filterRepos = (query, repos) => repos.filter((repo) => repo.name.includes(query));
 
 const removeRepoState = (nameAndRepo, repos) => repos.filter(
   (repo) => repo.name !== nameAndRepo[0] && repo.owner.login !== nameAndRepo[1],
@@ -66,8 +58,6 @@ const initialState = { Repos: [], sorted: false, ReposBackup: [] };
 const reposReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH:
-      console.log('action payload is', action.payload);
-      console.log('state is ', state);
       return { ...state, Repos: action.payload, ReposBackup: action.payload };
     case SORT:
     { const sortedRepo = state.Repos.sort((a, b) => compare(a, b));
