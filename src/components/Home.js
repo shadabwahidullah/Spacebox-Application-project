@@ -16,7 +16,7 @@ const Home = () => {
     return <Repo key={id} repo={repo} from="home" />;
   };
   return (
-    <div>
+    <div className="mb-5">
       <Searchbar from="home" />
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
         {watchedRepos.Repos.map((repo) => populateRepo(repo))}
