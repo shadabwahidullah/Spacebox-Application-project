@@ -12,6 +12,8 @@ The is implemented in react using Github’s REST endpoint
 - Redux
 - Javascript
 - Jest
+- Linters
+- GitHub API
 
 
 ## Getting Started
