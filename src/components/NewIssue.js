@@ -18,6 +18,7 @@ const NewIssue = () => {
   const controlForm = (event) => {
     event.preventDefault();
     dispatch(createIssue(name, repoName, data));
+    setData({ title: '' });
   };
 
   return (
