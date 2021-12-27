@@ -6,11 +6,14 @@ import Issue from './Issue';
 import NewIssue from './NewIssue';
 
 const RepoDetails = () => {
-  const params = useParams();
   const dispatch = useDispatch();
+
+  const params = useParams();
   const { name, repoName } = params;
+
   useEffect(() => { dispatch(getRepo(name, repoName)); }, []);
   useEffect(() => { dispatch(getIssues(name, repoName)); }, []);
+
   const { SelectedRepo, Issues } = useSelector((state) => state.repoDetailsReducer);
 
   const {

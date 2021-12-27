@@ -58,9 +58,7 @@ const Repo = (props) => {
         <button
           className="btn-warning rounded px-5 py-1 mt-4 mx-2"
           type="button"
-          onClick={() => {
-            addOrRemove();
-          }}
+          onClick={() => { addOrRemove(); }}
         >
           {from === 'home' ? 'Remove from ' : 'Add to '}
           {' '}

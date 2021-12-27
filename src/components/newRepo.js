@@ -6,9 +6,7 @@ import Repo from './Repo';
 const NewRepo = () => {
   const searchResult = useSelector((state) => state.newRepoReducer);
   const populateRepo = (repo) => {
-    const {
-      id,
-    } = repo;
+    const { id } = repo;
     return <Repo key={id} repo={repo} from="newRepo" />;
   };
   return (
