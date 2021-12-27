@@ -2,30 +2,25 @@ import axios from 'axios';
 import { BASE_URL, ACCESS_TOKEN } from './consts';
 
 const SEARCH_REPOS_URL = `${BASE_URL}/search/repositories?q=`;
-// const ADD_REPOS_URL = `${BASE_URL}/repos`;
+const ADD_REPOS_URL = `${BASE_URL}/repos`;
 
 const SEARCH_REPOS = 'spacebox/redux/newRepoReducer/SEARCH_REPOS';
 const ADD_REPOS = 'spacebox/redux/newRepoReducer/ADD_REPOS';
 
-export const searchRepos = (query, sorted) => (dispatch) => {
-  console.log('search query is: ', query);
+export const searchRepos = (query) => (dispatch) => {
   axios.get(`${SEARCH_REPOS_URL}${query}+in:name+followers:>=200`, {
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
   }).then((response) => {
-    console.log('search has been called', sorted);
-    console.log('search result is ', response.data.items);
     dispatch({ type: SEARCH_REPOS, payload: response.data.items });
-  }).catch((error) => { console.log(error.message); });
+  }).catch((error) => { console.error(error.message); });
 };
 
 export const addRepos = (login, name) => (dispatch) => {
-  console.log('add project has been called: ', login, name);
-  axios.put(`${BASE_URL}/repos/${login}/${name}/subscription`, { subscribed: 'true' }, {
+  axios.put(`${ADD_REPOS_URL}/${login}/${name}/subscription`, { subscribed: 'true' }, {
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-  }).then((response) => {
-    console.log('add to watch list', response);
+  }).then(() => {
     dispatch({ type: ADD_REPOS, payload: '' });
-  }).catch((error) => { console.log(error.message); });
+  }).catch((error) => { console.error(error.message); });
 };
 
 const initialState = { SearchRes: [] };
