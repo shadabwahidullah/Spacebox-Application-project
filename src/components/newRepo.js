@@ -10,7 +10,7 @@ const NewRepo = () => {
     return <Repo key={id} repo={repo} from="newRepo" />;
   };
   return (
-    <div>
+    <div className="mb-5">
       <Searchbar from="newRepo" />
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
         {searchResult.SearchRes.map((repo) => populateRepo(repo))}
