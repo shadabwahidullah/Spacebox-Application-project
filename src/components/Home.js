@@ -6,7 +6,6 @@ import Repo from './Repo';
 
 const Home = () => {
   const watchedRepos = useSelector((state) => state.reposReducer);
-  console.log('watched repos are: ', watchedRepos);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchWatchedRepos());

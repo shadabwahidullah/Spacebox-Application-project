@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   function login(e) {
     e.preventDefault();
-    console.log('login called');
   }
   return (
     <div className="row justify-content-center mt-5">
