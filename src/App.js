@@ -1,10 +1,13 @@
 import { Route, Routes } from 'react-router';
-import Login from './components/Login';
+
+// style
 import './App.css';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/js/src/collapse';
+
+// components
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 import NewRepo from './components/newRepo';
 import RepoDetails from './components/RepoDetails';
 
