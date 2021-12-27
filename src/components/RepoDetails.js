@@ -1,18 +1,67 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getRepo, getIssues } from '../redux/repoDetailsReducer';
 
 const RepoDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
-
   const { name, repoName } = params;
   useEffect(() => { dispatch(getRepo(name, repoName)); }, []);
   useEffect(() => { dispatch(getIssues(name, repoName)); }, []);
-  console.log('key at repo details is: ', params);
+  const { SelectedRepo, Issues } = useSelector((state) => state.repoDetailsReducer);
 
-  return (<h1> something</h1>);
+  console.log('key at repo details is: ', params);
+  console.log('Issues are : ', Issues);
+  console.log('selected repo is: ', SelectedRepo);
+
+  const {
+    id, open_issues: openIssues, forks_count: forksCount,
+    owner, created_at: date, description, noPR,
+  } = SelectedRepo;
+
+  const { login } = owner;
+
+  return (
+    <div key={id} className="p-3 text-center bg-primary rounded py-2 g-2 repo">
+      <h3 className="text-light">{name}</h3>
+      <h6 className="text-light text-start">
+        Description:
+      </h6>
+      <hr className="col-3 bg-light mb-1" />
+      <p className="text-light text-start ps-2">{description}</p>
+      <hr className="bg-light" />
+      <span className="d-flex justify-content-around">
+        <h6 className="text-light">
+          Owner:
+          {' '}
+          {login}
+        </h6>
+        <h6 className="text-light">
+          Open issues:
+          {' '}
+          {openIssues}
+        </h6>
+        <h6 className="text-light">
+          Forks count:
+          {' '}
+          {forksCount}
+        </h6>
+      </span>
+      <span className="text-light pt-4 row">
+        <h6 className="col-md-6">
+          Created At:
+          {' '}
+          {new Date(date).toDateString()}
+        </h6>
+        <h6 className="col-md-6">
+          Number of open PR:
+          {' '}
+          {noPR}
+        </h6>
+      </span>
+    </div>
+  );
 };
 
 export default RepoDetails;

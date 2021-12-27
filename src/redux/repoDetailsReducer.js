@@ -10,7 +10,14 @@ const GET_ISSUES_URL = `${BASE_URL}/repos`;
 export const getRepo = (name, repo) => (dispatch) => {
   axios.get(`${GET_REPO_URL}/${name}/${repo}`).then((response) => {
     console.log('the repo is: ', response);
-    dispatch({ type: GET_REPO, payload: response.data });
+    const { data } = response;
+    axios.get(`${GET_REPO_URL}/${name}/${repo}/pulls?state=open`).then((prResonse) => {
+      console.log('open pulls are: ', prResonse.data);
+      data.noPR = prResonse.data.length;
+      dispatch({ type: GET_REPO, payload: data });
+    }).catch((error) => { console.log(error.message); });
+  }).catch((error) => {
+    console.log(error.message);
   });
 };
 
