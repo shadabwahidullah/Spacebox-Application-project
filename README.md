@@ -64,10 +64,6 @@ Feel free to check the [issues page](../../issues/).
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-- Design by [Nelson Sakwa on Behance](https://www.behance.net/sakwadesignstudio).
-
 
 ## 📝 License
 
