@@ -10,17 +10,21 @@ const ADD_REPOS = 'spacebox/redux/newRepoReducer/ADD_REPOS';
 export const searchRepos = (query) => (dispatch) => {
   axios.get(`${SEARCH_REPOS_URL}${query}+in:name+followers:>=200`, {
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-  }).then((response) => {
-    dispatch({ type: SEARCH_REPOS, payload: response.data.items });
-  }).catch((error) => { console.error(error.message); });
+  })
+    .then((response) => {
+      dispatch({ type: SEARCH_REPOS, payload: response.data.items });
+    })
+    .catch((error) => { console.error(error.message); });
 };
 
 export const addRepos = (login, name) => (dispatch) => {
   axios.put(`${ADD_REPOS_URL}/${login}/${name}/subscription`, { subscribed: 'true' }, {
     headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-  }).then(() => {
-    dispatch({ type: ADD_REPOS, payload: '' });
-  }).catch((error) => { console.error(error.message); });
+  })
+    .then(() => {
+      dispatch({ type: ADD_REPOS, payload: '' });
+    })
+    .catch((error) => { console.error(error.message); });
 };
 
 const initialState = { SearchRes: [] };
