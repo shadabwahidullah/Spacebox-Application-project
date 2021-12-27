@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRepo, getIssues } from '../redux/repoDetailsReducer';
 import Issue from './Issue';
+import NewIssue from './NewIssue';
 
 const RepoDetails = () => {
   const params = useParams();
@@ -63,8 +64,9 @@ const RepoDetails = () => {
           </h6>
         </span>
       </div>
-      <h4 className="m-3 mb-1">Latest Open Issues:</h4>
+      <h4 className="m-3 mb-1">Latest   Open Issues:</h4>
       {Issues.map((e) => <Issue key={e.id} issue={e} />)}
+      <NewIssue />
     </div>
   );
 };

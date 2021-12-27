@@ -18,10 +18,9 @@ export const searchRepos = (query, sorted) => (dispatch) => {
   }).catch((error) => { console.log(error.message); });
 };
 
-export const addRepos = (fullname) => (dispatch) => {
-  console.log('add project has been called: ', fullname);
-  axios.put(`${BASE_URL}/repos/${fullname}/subscription?subscribed=true`, {
-    headers: { Authorization: `Basic ${ACCESS_TOKEN}` },
+export const addRepos = (login, name) => (dispatch) => {
+  console.log('add project has been called: ', login, name);
+  axios.put(`${BASE_URL}/repos/${login}/${name}/subscription?subscribed=true`, {
   }).then((response) => {
     console.log('add to watch list', response);
     dispatch({ type: ADD_REPOS, payload: '' });

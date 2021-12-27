@@ -9,7 +9,7 @@ const Repo = (props) => {
   const { repo, from } = props;
   const {
     id, name, open_issues: openIssues, forks_count: forksCount,
-    owner, created_at: dates, full_name: fullname,
+    owner, created_at: dates,
   } = repo;
 
   const { login } = owner;
@@ -18,7 +18,7 @@ const Repo = (props) => {
     if (from === 'home') {
       dispatch(removeRepo(login, name));
     } else {
-      dispatch(addRepos(fullname));
+      dispatch(addRepos(login, name));
     }
   };
 
