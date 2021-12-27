@@ -23,7 +23,6 @@ const Repo = (props) => {
   };
 
   const date = new Date(dates).toDateString();
-  console.log('date is : ', date);
   const { login: ownerName } = owner;
   return (
     <div className="col">
