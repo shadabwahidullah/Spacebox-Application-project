@@ -13,10 +13,6 @@ const RepoDetails = () => {
   useEffect(() => { dispatch(getIssues(name, repoName)); }, []);
   const { SelectedRepo, Issues } = useSelector((state) => state.repoDetailsReducer);
 
-  console.log('key at repo details is: ', params);
-  console.log('Issues are : ', Issues);
-  console.log('selected repo is: ', SelectedRepo);
-
   const {
     id, open_issues: openIssues, forks_count: forksCount,
     owner, created_at: date, description, noPR,
