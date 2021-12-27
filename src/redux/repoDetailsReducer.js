@@ -10,38 +10,33 @@ const GET_ISSUES_URL = `${BASE_URL}/repos`;
 
 export const getRepo = (name, repo) => (dispatch) => {
   axios.get(`${GET_REPO_URL}/${name}/${repo}`).then((response) => {
-    console.log('the repo is: ', response);
     const { data } = response;
     axios.get(`${GET_REPO_URL}/${name}/${repo}/pulls?state=open`).then((prResonse) => {
-      console.log('open pulls are: ', prResonse.data);
       data.noPR = prResonse.data.length;
       dispatch({ type: GET_REPO, payload: data });
-    }).catch((error) => { console.log(error.message); });
+    }).catch((error) => { console.error(error.message); });
   }).catch((error) => {
-    console.log(error.message);
+    console.error(error.message);
   });
 };
 
 export const getIssues = (name, repo) => (dispatch) => {
   axios.get(`${GET_ISSUES_URL}/${name}/${repo}/issues?sort=created&state=open&per_page=5`).then((response) => {
-    console.log('issues for this repo is', response.data);
     dispatch({ type: GET_ISSUES, payload: response.data });
   }).catch((error) => {
-    console.log(error.message);
+    console.error(error.message);
   });
 };
 
 export const createIssue = (name, repo, data) => (dispatch) => {
-  console.log(data);
   axios.post(`${GET_ISSUES_URL}/${name}/${repo}/issues`,
     data,
     {
       headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
     }).then((response) => {
-    console.log('created issue is', response.data);
     dispatch({ type: CREATE_ISSUE, payload: response.data });
   }).catch((error) => {
-    console.log(error.message);
+    console.error(error.message);
   });
 };
 
