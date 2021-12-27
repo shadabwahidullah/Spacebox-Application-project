@@ -11,33 +11,38 @@ const GET_ISSUES_URL = `${BASE_URL}/repos`;
 export const getRepo = (name, repo) => (dispatch) => {
   axios.get(`${GET_REPO_URL}/${name}/${repo}`).then((response) => {
     const { data } = response;
-    axios.get(`${GET_REPO_URL}/${name}/${repo}/pulls?state=open`).then((prResonse) => {
-      data.noPR = prResonse.data.length;
-      dispatch({ type: GET_REPO, payload: data });
-    }).catch((error) => { console.error(error.message); });
-  }).catch((error) => {
-    console.error(error.message);
-  });
+    axios.get(`${GET_REPO_URL}/${name}/${repo}/pulls?state=open`)
+      .then((prResonse) => {
+        data.noPR = prResonse.data.length;
+        dispatch({ type: GET_REPO, payload: data });
+      })
+      .catch((error) => { console.error(error.message); });
+  })
+    .catch((error) => {
+      console.error(error.message);
+    });
 };
 
 export const getIssues = (name, repo) => (dispatch) => {
-  axios.get(`${GET_ISSUES_URL}/${name}/${repo}/issues?sort=created&state=open&per_page=5`).then((response) => {
-    dispatch({ type: GET_ISSUES, payload: response.data });
-  }).catch((error) => {
-    console.error(error.message);
-  });
+  axios.get(`${GET_ISSUES_URL}/${name}/${repo}/issues?sort=created&state=open&per_page=5`)
+    .then((response) => {
+      dispatch({ type: GET_ISSUES, payload: response.data });
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
 };
 
 export const createIssue = (name, repo, data) => (dispatch) => {
   axios.post(`${GET_ISSUES_URL}/${name}/${repo}/issues`,
     data,
-    {
-      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-    }).then((response) => {
-    dispatch({ type: CREATE_ISSUE, payload: response.data });
-  }).catch((error) => {
-    console.error(error.message);
-  });
+    { headers: { Authorization: `Bearer ${ACCESS_TOKEN}` } })
+    .then((response) => {
+      dispatch({ type: CREATE_ISSUE, payload: response.data });
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
 };
 
 const initialState = { SelectedRepo: { owner: {} }, Issues: [] };
@@ -55,4 +60,5 @@ const repoDetailsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
 export default repoDetailsReducer;
