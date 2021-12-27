@@ -12,9 +12,11 @@ const Repo = (props) => {
     owner, created_at: dates, full_name: fullname,
   } = repo;
 
+  const { login } = owner;
+
   const addOrRemove = () => {
     if (from === 'home') {
-      dispatch(removeRepo(owner.login, name));
+      dispatch(removeRepo(login, name));
     } else {
       dispatch(addRepos(fullname));
     }
@@ -65,7 +67,9 @@ const Repo = (props) => {
           {' '}
           watch
         </button>
-        <Link key={id} to={`/repo-details/${id}`}><button className="btn-warning rounded px-5 py-1 mt-4 mx-2" type="button">See Details</button></Link>
+        <Link key={id} to={`/repo-details/${login}/${name}`}>
+          <button className="btn-warning rounded px-5 py-1 mt-4 mx-2" type="button">See Details</button>
+        </Link>
       </div>
     </div>
   );

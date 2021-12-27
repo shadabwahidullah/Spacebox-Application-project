@@ -17,7 +17,7 @@ function App() {
         <Route path="/" exact="true" element={<Home />} />
         <Route path="/add-new-repo" exact="true" element={<NewRepo />} />
         <Route path="/repo-details" element={<RepoDetails />}>
-          <Route path=":repoId" element={<RepoDetails />} />
+          <Route path=":name/:repoName" element={<RepoDetails />} />
         </Route>
         <Route path="/login" exact="true" element={<Login />} />
       </Routes>
