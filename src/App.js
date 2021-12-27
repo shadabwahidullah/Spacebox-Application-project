@@ -19,7 +19,6 @@ function App() {
         <Route path="/repo-details" element={<RepoDetails />}>
           <Route path=":name/:repoName" element={<RepoDetails />} />
         </Route>
-        <Route path="/login" exact="true" element={<Login />} />
       </Routes>
     </div>
   );

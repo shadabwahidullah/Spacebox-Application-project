@@ -12,9 +12,7 @@ const Home = () => {
   }, []);
 
   const populateRepo = (repo) => {
-    const {
-      id,
-    } = repo;
+    const { id } = repo;
     return <Repo key={id} repo={repo} from="home" />;
   };
   return (
