@@ -8,12 +8,9 @@ const Searchbar = (props) => {
   const { from } = props;
   const dispatch = useDispatch();
   const onSearch = (searchQuery) => {
-    console.log(from);
     if (from === 'newRepo') {
-      console.log('called search from new Repo');
       dispatch(searchRepos(searchQuery));
     } else if (from === 'home') {
-      console.log('called search from home');
       dispatch(searchRepositories(searchQuery));
     }
   };
@@ -24,7 +21,6 @@ const Searchbar = (props) => {
           className="form-control my-2 col-10"
           placeholder="Search for repositories"
           onChange={(event) => {
-            console.log('filter', event.target.value);
             onSearch(event.target.value);
           }}
         />
@@ -37,7 +33,6 @@ const Searchbar = (props) => {
             type="checkbox"
             checked={sorted}
             onChange={(event) => {
-              console.log('value of checkbox', event.target.checked);
               dispatch(sortRepos(event.target.checked));
             }}
           />
