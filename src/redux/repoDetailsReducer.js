@@ -23,7 +23,7 @@ export const getIssues = (name, repo) => (dispatch) => {
   });
 };
 
-const initialState = { SelectedRepo: {}, Issues: [] };
+const initialState = { SelectedRepo: { owner: {} }, Issues: [] };
 
 const repoDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
