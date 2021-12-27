@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { BASE_URL } from './consts';
+import { BASE_URL, ACCESS_TOKEN } from './consts';
 
 const GET_REPO = 'spacebox/redux/repoDetailsReducer/GET_REPO';
 const GET_ISSUES = 'spacebox/redux/repoDetailsReducer/GET_ISSUES';
+const CREATE_ISSUE = 'spacebox/redux/repoDetailsReducer/CREATE_ISSUES';
 
 const GET_REPO_URL = `${BASE_URL}/repos`;
 const GET_ISSUES_URL = `${BASE_URL}/repos`;
@@ -30,6 +31,20 @@ export const getIssues = (name, repo) => (dispatch) => {
   });
 };
 
+export const createIssue = (name, repo, data) => (dispatch) => {
+  console.log(data);
+  axios.post(`${GET_ISSUES_URL}/${name}/${repo}/issues`,
+    data,
+    {
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    }).then((response) => {
+    console.log('created issue is', response.data);
+    dispatch({ type: CREATE_ISSUE, payload: response.data });
+  }).catch((error) => {
+    console.log(error.message);
+  });
+};
+
 const initialState = { SelectedRepo: { owner: {} }, Issues: [] };
 
 const repoDetailsReducer = (state = initialState, action) => {
@@ -38,6 +53,9 @@ const repoDetailsReducer = (state = initialState, action) => {
       return { ...state, SelectedRepo: action.payload };
     case GET_ISSUES:
       return { ...state, Issues: action.payload };
+    case CREATE_ISSUE:
+    { const tmp = state.Issues.slice(0, 4);
+      return { ...state, Issues: [action.payload, ...tmp] }; }
     default:
       return state;
   }
