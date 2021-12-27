@@ -11,14 +11,12 @@ const NewIssue = () => {
     const newData = { ...data };
     newData.title = e.target.value;
     setData(newData);
-    console.log(data);
   };
 
   const params = useParams();
   const { name, repoName } = params;
   const controlForm = (event) => {
     event.preventDefault();
-    console.log(event.target.child);
     dispatch(createIssue(name, repoName, data));
   };
 
