@@ -18,7 +18,7 @@ The is implemented in react using Github’s REST endpoint
 
 ## Getting Started
 
-1 - On Github, on the main page of the Gameportal repository, click the Code button and copy "Clone with HTTPS" by clicking the copy icon.
+1 - On Github, on the main page of the Spacebox Application Project repository, click the Code button and copy "Clone with HTTPS" by clicking the copy icon.
 In your terminal, enter a git clone and past the link that you copied from the repository, and press the   Enter
 (e.g. git clone https://github.com/shadabwahidullah/Spacebox-Application-project.git).
 
